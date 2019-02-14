@@ -46,7 +46,7 @@ class IntlCurrencyInput extends Component {
 	nextProps.value !== this.props.value
     ) {
       const value = nextProps.value !== this.props.value ? nextProps.value : this.state.maskedValue
-      const [, maskedValue] = this.calculateValues(value, nextProps.config, nextProps.currency)
+      const [, maskedValue] = this.calculateValues(value+'', nextProps.config, nextProps.currency)
       this.setState({ maskedValue: maskedValue })
     }
   }
