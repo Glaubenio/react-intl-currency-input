@@ -83,7 +83,7 @@ var IntlCurrencyInput = function (_Component) {
       if (nextProps.currency !== this.props.currency || nextProps.value !== this.props.value) {
         var value = nextProps.value !== this.props.value ? nextProps.value : this.state.maskedValue;
 
-        var _calculateValues = this.calculateValues(value, nextProps.config, nextProps.currency),
+        var _calculateValues = this.calculateValues(value + '', nextProps.config, nextProps.currency),
             _calculateValues2 = _slicedToArray(_calculateValues, 2),
             maskedValue = _calculateValues2[1];
 
