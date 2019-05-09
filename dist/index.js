@@ -105,6 +105,7 @@ var IntlCurrencyInput = function (_Component) {
     key: "calculateValues",
     value: function calculateValues(inputFieldValue, config, currency) {
       // value must be divided by 100 to properly work with cents.
+      console.log(config);
       var value = this.normalizeValue(inputFieldValue) / 100;
       var maskedValue = (0, _formatCurrency2.default)(value, config, currency);
 

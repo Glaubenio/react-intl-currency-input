@@ -36,17 +36,17 @@ class IntlCurrencyInput extends Component {
   }
 
   componentDidMount() {
-    const value =  this.props.value || this.props.defaultValue || 0
+    const value = this.props.value || this.props.defaultValue || 0
     this.setMaskedValue(value)
   }
 
   componentWillReceiveProps(nextProps) {
     if (
-	nextProps.currency !== this.props.currency || 
-	nextProps.value !== this.props.value
+      nextProps.currency !== this.props.currency ||
+      nextProps.value !== this.props.value
     ) {
       const value = nextProps.value !== this.props.value ? nextProps.value : this.state.maskedValue
-      const [, maskedValue] = this.calculateValues(value+'', nextProps.config, nextProps.currency)
+      const [, maskedValue] = this.calculateValues(value + '', nextProps.config, nextProps.currency)
       this.setState({ maskedValue: maskedValue })
     }
   }
@@ -62,6 +62,7 @@ class IntlCurrencyInput extends Component {
 
   calculateValues(inputFieldValue, config, currency) {
     // value must be divided by 100 to properly work with cents.
+    console.log(config)
     const value = this.normalizeValue(inputFieldValue) / 100
     const maskedValue = formatCurrency(value, config, currency)
 
@@ -77,7 +78,7 @@ class IntlCurrencyInput extends Component {
 
       return [value, maskedValue]
     } else {
-      return [this.normalizeValue(this.state.maskedValue)/100, this.state.maskedValue]
+      return [this.normalizeValue(this.state.maskedValue) / 100, this.state.maskedValue]
     }
   }
 
@@ -141,7 +142,7 @@ class IntlCurrencyInput extends Component {
   allowedProps() {
     const allowedProps = { ...this.props }
 
-		delete allowedProps.defaultValue
+    delete allowedProps.defaultValue
     delete allowedProps.currency
     delete allowedProps.config
     delete allowedProps.autoSelect
@@ -162,10 +163,10 @@ class IntlCurrencyInput extends Component {
       <InputComponent {...this.allowedProps()}
         value={this.handleValue()}
         ref={input => this.input = this.handleInputRef(input)}
-        onChange={ ev => this.handleChange(ev) }
-        onBlur={ ev => this.handleBlur(ev) }
-        onFocus={ ev => this.handleFocus(ev) }
-        onKeyUp={ ev => this.handleKeyPress(ev) }
+        onChange={ev => this.handleChange(ev)}
+        onBlur={ev => this.handleBlur(ev)}
+        onFocus={ev => this.handleFocus(ev)}
+        onKeyUp={ev => this.handleKeyPress(ev)}
       />
     )
   }
